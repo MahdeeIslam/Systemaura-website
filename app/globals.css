@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   SystemAura Solutions — Design Tokens
+   ----------------------------------------------------------------------------
+   This is the single source of truth for the brand. To re-skin the site,
+   change the hex values below (colors) and the font variables in app/layout.tsx
+   (fonts). Every component references these tokens via Tailwind utilities
+   (e.g. `bg-ink`, `text-electric`, `border-line`, `font-display`).
+   ============================================================================ */
+
+@theme {
+  /* --- Brand palette (exact brand-guide values) --- */
+  --color-ink: #111111; /* primary background */
+  --color-electric: #2563eb; /* primary accent — CTAs, key headline words, active states */
+  --color-copper: #b87333; /* secondary accent — eyebrows, icons, dividers, numbering */
+  --color-paper: #f8f8f8; /* primary text on dark / light section backgrounds */
+  --color-slate: #475569; /* muted text, borders, secondary UI */
+
+  /* --- Derived tints & shades --- */
+  --color-ink-card: #1a1a1a; /* lifted card surface sitting on `ink` */
+  --color-ink-soft: #161616; /* subtle alternate dark section */
+  --color-line: #262626; /* hairline borders / dividers on dark */
+  --color-electric-soft: #3b82f6; /* lighter electric for hovers/links */
+  --color-copper-soft: #cd8a4a; /* lighter copper for hovers */
+  --color-slate-soft: #94a3b8; /* readable muted text on dark */
+
+  /* --- Custom animations (all gated behind prefers-reduced-motion below) --- */
+  --animate-pulse-node: pulse-node 4s ease-in-out infinite;
+  --animate-drift: drift 26s ease-in-out infinite;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Font tokens are wired to the next/font variables set in app/layout.tsx.
+   `@theme inline` keeps the var() reference live instead of copying it. */
+@theme inline {
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ============================================================================
+   Base layer
+   ============================================================================ */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* offset anchored scrolls so the sticky header never covers a target */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-electric);
+    color: #fff;
+  }
+
+  /* Visible, on-brand keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-electric);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+}
+
+/* ============================================================================
+   Reusable component utilities
+   ============================================================================ */
+@layer components {
+  /* Consistent page gutters + max width */
+  .container-x {
+    width: 100%;
+    max-width: 80rem; /* 1280px */
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .container-x {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Soft radial accent glow used behind hero / CTA bands */
+  .glow-electric {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--color-electric) 22%, transparent),
+      transparent
+    );
+  }
+  .glow-copper {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--color-copper) 18%, transparent),
+      transparent
+    );
+  }
+
+  /* Faint dotted "circuit grid" — a quiet, static echo of the hero motif */
+  .circuit-grid {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--color-slate) 32%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(closest-side, #000 60%, transparent);
+    mask-image: radial-gradient(closest-side, #000 60%, transparent);
+  }
+}
+
+/* ============================================================================
+   Keyframes (the connected-systems motif + scroll reveals)
+   ============================================================================ */
+@keyframes pulse-node {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* A small "data pulse" that travels along a wire (offset-path set inline). */
+@keyframes flow {
+  from {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  to {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================================
+   Respect prefers-reduced-motion — disable all ambient + reveal motion.
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
