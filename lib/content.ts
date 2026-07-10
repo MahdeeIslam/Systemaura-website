@@ -13,7 +13,7 @@ export const COMPANY = {
   name: "SystemAura Solutions",
   shortName: "SystemAura",
   location: "Melbourne",
-  email: "hello@systemaura.solutions",
+  email: "hello@systemaura.com",
   phone: "(03) 9000 0000", // TODO: replace with real phone number
   primaryCta: "Book a Free Operational Audit",
 } as const;

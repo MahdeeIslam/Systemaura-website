@@ -24,7 +24,7 @@ const tagline =
   "Custom systems, automations, apps, and websites that save time, reduce manual work, and increase profitability.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://systemaura.solutions"),
+  metadataBase: new URL("https://systemaura.com"),
   title: {
     default: `${siteName} — Systems That Drive Growth`,
     template: `%s | ${siteName}`,
