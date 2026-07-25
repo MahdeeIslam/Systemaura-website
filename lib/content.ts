@@ -13,8 +13,8 @@ export const COMPANY = {
   name: "SystemAura Solutions",
   shortName: "SystemAura",
   location: "Melbourne",
-  email: "hello@systemaura.com",
-  phone: "(03) 9000 0000", // TODO: replace with real phone number
+  email: "hello@systemurasolutions.com",
+  // No public phone number yet.
   primaryCta: "Book a Free Operational Audit",
 } as const;
 
@@ -52,7 +52,7 @@ export const SOLUTIONS: Solution[] = [
   {
     icon: "automation",
     title: "Automations",
-    outcome: "We automate repetitive tasks and streamline operations.",
+    outcome: "We automate repetitive tasks and make everyday work run smoother.",
   },
   {
     icon: "app",
@@ -92,7 +92,7 @@ export const SERVICES: ServiceDetail[] = [
   {
     icon: "automation",
     title: "Automations",
-    outcome: "We automate repetitive tasks and streamline operations.",
+    outcome: "We automate repetitive tasks and make everyday work run smoother.",
     problem:
       "Your best people spend hours every week on copy-paste admin, chasing updates and re-entering the same information. That time is expensive and it's slowing everything down.",
     includes: [
@@ -161,8 +161,8 @@ export const PROBLEMS: ProblemCard[] = [
   },
   {
     icon: "scale",
-    title: "Scalability Issues",
-    description: "Systems that can't keep up with growth.",
+    title: "Struggling to Grow",
+    description: "Systems that can't keep up as the work grows.",
   },
   {
     icon: "cash",
@@ -365,7 +365,7 @@ export const PROCESS = [
     step: "01",
     title: "Discover",
     description:
-      "We audit your operations and identify bottlenecks and opportunities.",
+      "We look at how your business runs and find what's slowing you down.",
   },
   {
     step: "02",
@@ -375,7 +375,7 @@ export const PROCESS = [
   {
     step: "03",
     title: "Build",
-    description: "We build, integrate, and automate your systems seamlessly.",
+    description: "We build, connect, and automate your systems so everything works together.",
   },
   {
     step: "04",

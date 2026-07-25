@@ -87,15 +87,6 @@ export function Footer() {
                 {COMPANY.email}
               </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Icon name="phone" size={16} className="text-copper" />
-              <a
-                href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
-                className="transition-colors hover:text-electric"
-              >
-                {COMPANY.phone}
-              </a>
-            </li>
             <li className="flex items-center gap-2 text-slate-soft">
               <Icon name="building" size={16} className="text-copper" />
               Based in {COMPANY.location}

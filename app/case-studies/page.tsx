@@ -22,7 +22,7 @@ export default function CaseStudiesPage() {
             Real problems. <span className="text-electric">Real results.</span>
           </>
         }
-        intro="A look at the kinds of bottlenecks we remove and the outcomes our clients feel — laid out as problem, solution and result."
+        intro="A look at the kinds of problems we remove and the outcomes our clients feel — laid out as problem, solution and result."
       />
 
       <Section tone="ink">

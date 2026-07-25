@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
-import { INDUSTRY_OPTIONS } from "@/lib/content";
+import { INDUSTRY_OPTIONS, COMPANY } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 /* ============================================================================
@@ -51,6 +51,7 @@ export function ContactForm() {
   const [values, setValues] = useState<FormState>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
 
   const update =
     (field: keyof FormState) =>
@@ -64,7 +65,7 @@ export function ContactForm() {
       setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
     };
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     const nextErrors = validate(values);
     setErrors(nextErrors);
@@ -75,10 +76,55 @@ export function ContactForm() {
       return;
     }
 
-    // TODO: connect to Calendly / CRM / email.
-    // For now we just log the booking request and confirm to the visitor.
-    console.log("Audit request:", values);
-    setSubmitted(true);
+    setStatus("submitting");
+
+    // Booking requests are emailed via Web3Forms (free, no backend needed).
+    // SETUP: create a free access key at https://web3forms.com using the
+    // business email, then set it as the env var NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+    // (locally in .env.local, and in your host's project settings). Every request
+    // then lands in that inbox. Prefer Calendly / a CRM instead? Swap the fetch.
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      // No email service configured yet — log and confirm so the form still
+      // works in development and preview.
+      console.log("Audit request (email delivery not configured yet):", values);
+      setStatus("idle");
+      setSubmitted(true);
+      return;
+    }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: "New Free Operational Audit request",
+          from_name: `${COMPANY.name} website`,
+          replyto: values.email,
+          name: values.name,
+          business: values.business || "—",
+          email: values.email,
+          phone: values.phone || "—",
+          industry: values.industry || "—",
+          message: values.message || "—",
+          botcheck: "", // honeypot
+        }),
+      });
+      const data = (await res.json()) as { success?: boolean };
+      if (data.success) {
+        setStatus("idle");
+        setSubmitted(true);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (submitted) {
@@ -190,13 +236,29 @@ export function ContactForm() {
       </div>
 
       <div className="mt-2 flex flex-col gap-4 sm:flex-row sm:items-center">
-        <Button type="submit" size="lg" withArrow>
-          Book My Free Audit
+        <Button
+          type="submit"
+          size="lg"
+          withArrow={status !== "submitting"}
+          disabled={status === "submitting"}
+        >
+          {status === "submitting" ? "Sending…" : "Book My Free Audit"}
         </Button>
         <p className="text-xs text-slate-soft">
           No obligation. We reply within one business day.
         </p>
       </div>
+
+      {status === "error" && (
+        <p role="alert" className="text-sm text-red-400">
+          Sorry — something went wrong sending your request. Please email us
+          directly at{" "}
+          <a href={`mailto:${COMPANY.email}`} className="font-medium underline">
+            {COMPANY.email}
+          </a>
+          .
+        </p>
+      )}
     </form>
   );
 }

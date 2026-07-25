@@ -12,7 +12,7 @@ import { cn } from "@/lib/cn";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Custom systems, automations, web applications and websites — each built to save your business time, reduce manual work and increase profitability.",
+    "Custom systems, automations, web applications and websites — each built to save your business time, cut down manual work and help you make more money.",
 };
 
 export default function ServicesPage() {

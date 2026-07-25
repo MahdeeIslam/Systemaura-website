@@ -29,16 +29,16 @@ export function Hero() {
             className="animate-rise mt-6 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl"
             style={{ animationDelay: "80ms" }}
           >
-            We Fix Operational Bottlenecks That Prevent Businesses{" "}
-            <span className="text-electric">From Scaling</span>
+            We Fix the Everyday Problems That Hold Your Business{" "}
+            <span className="text-electric">Back</span>
           </h1>
 
           <p
             className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-slate-soft"
             style={{ animationDelay: "160ms" }}
           >
-            Custom systems, automations, apps, and websites that save time,
-            reduce manual work, and increase profitability.
+            Custom systems, automations, apps, and websites that save you time,
+            cut down manual work, and help you make more money.
           </p>
 
           <div

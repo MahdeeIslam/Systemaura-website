@@ -114,12 +114,23 @@ Everything below works as a polished placeholder today. Search the codebase for
 
 | What                       | Where                                                        | Note                                                                 |
 | -------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
-| **Booking form handler**   | `components/forms/ContactForm.tsx` (`submit()`)              | Currently logs the request + shows a success state. Wire to Calendly / a CRM / email. |
-| **Real client logos**      | `lib/content.ts` → `TRUST_LOGOS`                             | Text placeholders today; replace with real logo SVGs.                |
-| **Real testimonials**      | `lib/content.ts` → `TESTIMONIALS`                           | Placeholder quotes/names; a video-testimonial slot is already laid out. |
+| **Booking form → email**   | `components/forms/ContactForm.tsx` (`submit()`)              | Booking requests are emailed via [Web3Forms](https://web3forms.com) (free, no backend). **Setup:** create an access key with the business email, set it as `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see below). Until it's set, the form still validates + confirms but only logs the request. |
+| **Client logos + testimonials** | `app/page.tsx`, `lib/content.ts`, `components/sections/TrustBar.tsx` + `Testimonials.tsx` | Both sections are currently left off the homepage until real clients exist. Re-add `<TrustBar />` / `<Testimonials />` to `app/page.tsx` and fill the data in `content.ts`. |
 | **Case-study numbers**     | `lib/content.ts` → `CASE_STUDIES`                           | Illustrative examples until verified client figures are added.       |
-| **Phone number**           | `lib/content.ts` → `COMPANY.phone`                          | Placeholder.                                                         |
 | **"Why" boardroom image**  | `components/sections/WhySystemAura.tsx`                      | A branded placeholder panel; swap for a real photo via `next/image`. |
+
+### Email delivery env var
+
+Create a free access key at [web3forms.com](https://web3forms.com) using the
+business inbox, then set it wherever the app runs:
+
+```bash
+# .env.local  (local dev) — and add the same key in your host's env settings
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your-access-key
+```
+
+Every _Book a Free Operational Audit_ request will then be emailed to that inbox.
+Prefer Calendly or a CRM instead? Swap the `fetch` in `ContactForm.tsx`.
 
 ---
 

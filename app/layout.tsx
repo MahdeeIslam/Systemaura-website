@@ -21,7 +21,7 @@ const body = Inter({
 
 const siteName = "SystemAura Solutions";
 const tagline =
-  "Custom systems, automations, apps, and websites that save time, reduce manual work, and increase profitability.";
+  "Custom systems, automations, apps, and websites that save you time, cut down manual work, and help you make more money.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://systemaura.com"),

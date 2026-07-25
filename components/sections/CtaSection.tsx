@@ -4,7 +4,7 @@ import { NodeNetwork } from "@/components/brand/NodeNetwork";
 /* Reusable closing CTA band for secondary pages. Defaults to the audit offer. */
 export function CtaSection({
   heading = "Ready to see where your time and money are going?",
-  sub = "Book a complimentary Operational Audit. We'll map your bottlenecks and give you practical, tailored recommendations — no obligation.",
+  sub = "Book a free Operational Audit. We'll show you exactly where your business is losing time and money, and give you practical, tailored recommendations — no obligation.",
   buttonLabel = "Book a Free Operational Audit",
   href = "/contact",
 }: {

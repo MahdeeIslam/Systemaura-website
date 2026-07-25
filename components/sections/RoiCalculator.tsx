@@ -105,9 +105,9 @@ function SliderField({
 }
 
 export function RoiCalculator() {
-  const [staff, setStaff] = useState(5);
-  const [hours, setHours] = useState(10);
-  const [cost, setCost] = useState(45);
+  const [staff, setStaff] = useState(3);
+  const [hours, setHours] = useState(5);
+  const [cost, setCost] = useState(40);
 
   const annual = staff * hours * cost * WEEKS_PER_YEAR;
   const animated = useCountUp(annual);
@@ -127,7 +127,7 @@ export function RoiCalculator() {
               label="Number of staff"
               value={staff}
               min={1}
-              max={50}
+              max={30}
               step={1}
               display={`${staff}`}
               onChange={setStaff}
@@ -136,7 +136,7 @@ export function RoiCalculator() {
               label="Hours on admin per week (per person)"
               value={hours}
               min={1}
-              max={40}
+              max={20}
               step={1}
               display={`${hours} hrs`}
               onChange={setHours}
@@ -145,7 +145,7 @@ export function RoiCalculator() {
               label="Average hourly cost"
               value={cost}
               min={20}
-              max={150}
+              max={120}
               step={5}
               display={money.format(cost)}
               onChange={setCost}

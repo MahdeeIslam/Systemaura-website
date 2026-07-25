@@ -66,15 +66,6 @@ export default function ContactPage() {
                     {COMPANY.email}
                   </a>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Icon name="phone" size={16} className="text-copper" />
-                  <a
-                    href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}
-                    className="text-paper/90 transition-colors hover:text-electric"
-                  >
-                    {COMPANY.phone}
-                  </a>
-                </li>
                 <li className="flex items-center gap-2.5 text-slate-soft">
                   <Icon name="building" size={16} className="text-copper" />
                   Based in {COMPANY.location}, working with businesses Australia-wide
