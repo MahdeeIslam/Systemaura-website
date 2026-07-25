@@ -39,11 +39,13 @@ const inputClass =
 function validate(values: FormState): Errors {
   const errors: Errors = {};
   if (!values.name.trim()) errors.name = "Please tell us your name.";
+  if (!values.business.trim()) errors.business = "Please add your business name.";
   if (!values.email.trim()) {
     errors.email = "We need an email to send your audit details.";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
     errors.email = "That email doesn't look quite right.";
   }
+  if (!values.phone.trim()) errors.phone = "Please add a contact number.";
   return errors;
 }
 
@@ -173,6 +175,7 @@ export function ContactForm() {
         <Field
           id="business"
           label="Business name"
+          required
           value={values.business}
           onChange={update("business")}
           error={errors.business}
@@ -194,6 +197,7 @@ export function ContactForm() {
           id="phone"
           label="Phone"
           type="tel"
+          required
           value={values.phone}
           onChange={update("phone")}
           error={errors.phone}

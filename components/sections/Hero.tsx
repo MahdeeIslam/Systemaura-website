@@ -29,7 +29,7 @@ export function Hero() {
             className="animate-rise mt-6 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl"
             style={{ animationDelay: "80ms" }}
           >
-            We Fix the Everyday Problems That Hold Your Business{" "}
+            We Solve the Everyday Operational Problems That Hold Your Business{" "}
             <span className="text-electric">Back</span>
           </h1>
 

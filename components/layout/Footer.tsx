@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
-import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { NAV, INDUSTRIES, COMPANY } from "@/lib/content";
 
@@ -9,16 +8,6 @@ export function Footer() {
 
   return (
     <footer className="border-t border-line bg-ink-soft">
-      {/* Final CTA line */}
-      <div className="container-x flex flex-col items-start justify-between gap-6 border-b border-line py-12 md:flex-row md:items-center">
-        <p className="max-w-xl font-display text-2xl font-semibold leading-tight sm:text-3xl">
-          Find out where your business is losing time and money.
-        </p>
-        <Button href="/contact" size="lg" withArrow>
-          {COMPANY.primaryCta}
-        </Button>
-      </div>
-
       {/* Link columns */}
       <div className="container-x grid grid-cols-2 gap-10 py-14 md:grid-cols-4">
         <div className="col-span-2 md:col-span-1">
