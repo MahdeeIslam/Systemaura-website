@@ -254,7 +254,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p role="alert" className="text-sm text-red-400">
+        <p role="alert" className="text-sm text-red-600">
           Sorry — something went wrong sending your request. Please email us
           directly at{" "}
           <a href={`mailto:${COMPANY.email}`} className="font-medium underline">
@@ -309,10 +309,10 @@ function Field({
         aria-required={required || undefined}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? errorId : undefined}
-        className={cn(inputClass, error ? "border-red-400/70" : "border-line")}
+        className={cn(inputClass, error ? "border-red-500" : "border-hair")}
       />
       {error && (
-        <p id={errorId} className="text-xs text-red-400">
+        <p id={errorId} className="text-xs text-red-600">
           {error}
         </p>
       )}

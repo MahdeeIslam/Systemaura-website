@@ -1,66 +1,62 @@
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { NodeNetwork } from "@/components/brand/NodeNetwork";
+import { Icon } from "@/components/ui/Icon";
+import { DashboardDemo } from "@/components/dashboard/DashboardDemo";
 
-/* Homepage section 1 — Hero (above the fold). */
+/* Homepage section 1 — Hero (light) with the illustrative demo dashboard. */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink pb-20 pt-32 sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-44">
-      {/* Ambient background: faint circuit grid + glows + full-bleed motif */}
+    <section className="relative overflow-hidden bg-canvas pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36">
+      {/* Very light supporting background */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="circuit-grid absolute inset-0 opacity-40" />
-        <div className="glow-electric absolute -left-20 top-0 h-[28rem] w-[28rem]" />
-        <div className="glow-copper absolute -right-10 top-40 h-80 w-80" />
-        {/* Faint motif behind everything on small screens */}
-        <NodeNetwork
-          variant="quiet"
-          className="absolute inset-0 h-full w-full lg:hidden"
-        />
+        <div className="circuit-grid absolute right-0 top-0 h-96 w-96 opacity-60" />
+        <div className="glow-blue absolute -left-24 top-10 h-96 w-96" />
+        <div className="glow-copper absolute right-10 top-64 h-72 w-72 opacity-70" />
       </div>
 
-      <div className="container-x relative grid items-center gap-12 lg:grid-cols-12">
+      <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
         {/* Copy */}
-        <div className="lg:col-span-7">
+        <div>
           <div className="animate-rise" style={{ animationDelay: "0ms" }}>
             <Eyebrow>Systems That Drive Growth</Eyebrow>
           </div>
 
           <h1
-            className="animate-rise mt-6 max-w-3xl text-balance font-display text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl"
-            style={{ animationDelay: "80ms" }}
+            className="animate-rise mt-5 max-w-xl text-balance font-display text-4xl font-bold leading-[1.08] text-navy sm:text-5xl lg:text-[3.4rem]"
+            style={{ animationDelay: "70ms" }}
           >
-            We Solve the Everyday Operational Problems That Hold Your Business{" "}
-            <span className="text-electric">Back</span>
+            Better operations, less manual work,{" "}
+            <span className="text-copper">more profits.</span>
           </h1>
 
           <p
-            className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-slate-soft"
-            style={{ animationDelay: "160ms" }}
+            className="animate-rise mt-6 max-w-lg text-lg leading-relaxed text-slate"
+            style={{ animationDelay: "140ms" }}
           >
-            Custom systems, automations, apps, and websites that save you time,
-            cut down manual work, and help you make more money.
+            We build custom systems and automations that replace manual work,
+            save time and help your business make more money.
           </p>
 
           <div
-            className="animate-rise mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
-            style={{ animationDelay: "240ms" }}
+            className="animate-rise mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+            style={{ animationDelay: "210ms" }}
           >
             <Button href="/contact" size="lg" withArrow>
-              Book a Free Operational Audit
+              Book Free Operational Audit
             </Button>
-            <Button href="/case-studies" size="lg" variant="secondary">
-              View Case Studies
+            <Button href="#how-it-works" size="lg" variant="secondary">
+              <Icon name="play" size={14} className="text-copper" />
+              See How It Works
             </Button>
           </div>
         </div>
 
-        {/* Signature visual (desktop) */}
-        <div className="hidden lg:col-span-5 lg:block">
-          <div className="animate-rise relative" style={{ animationDelay: "200ms" }}>
-            <div className="relative aspect-square rounded-3xl border border-line bg-ink-card/60 p-2 backdrop-blur-sm">
-              <NodeNetwork className="h-full w-full" />
-            </div>
-          </div>
+        {/* Demo dashboard */}
+        <div
+          className="animate-rise lg:pl-2"
+          style={{ animationDelay: "160ms" }}
+        >
+          <DashboardDemo />
         </div>
       </div>
     </section>

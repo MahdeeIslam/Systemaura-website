@@ -1,39 +1,48 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   SystemAura Solutions — Design Tokens
+   SystemAura Solutions — Design Tokens (Light UI)
    ----------------------------------------------------------------------------
-   This is the single source of truth for the brand. To re-skin the site,
-   change the hex values below (colors) and the font variables in app/layout.tsx
-   (fonts). Every component references these tokens via Tailwind utilities
-   (e.g. `bg-ink`, `text-electric`, `border-line`, `font-display`).
+   Light, slightly-warm interface. Bright SystemAura blue for interaction,
+   copper as a premium accent, deep navy text on a warm off-white canvas.
+   Legacy token names (ink / paper / line …) are kept as aliases mapped to the
+   light values so every existing component re-skins cleanly.
    ============================================================================ */
 
 @theme {
-  /* --- Brand palette (exact brand-guide values) --- */
-  --color-ink: #111111; /* primary background */
-  --color-electric: #2563eb; /* primary accent — CTAs, key headline words, active states */
-  --color-copper: #b87333; /* secondary accent — eyebrows, icons, dividers, numbering */
-  --color-paper: #f8f8f8; /* primary text on dark / light section backgrounds */
-  --color-slate: #475569; /* muted text, borders, secondary UI */
+  /* --- Brand --- */
+  --color-blue: #2563eb; /* primary: buttons, links, active states, key icons */
+  --color-blue-strong: #1d4ed8; /* darker blue for hovers on light */
+  --color-copper: #b87333; /* accent: labels, secondary highlights, icons */
+  --color-copper-light: #d79452; /* warm copper for soft gradients / glow */
 
-  /* --- Derived tints & shades --- */
-  --color-ink-card: #1a1a1a; /* lifted card surface sitting on `ink` */
-  --color-ink-soft: #161616; /* subtle alternate dark section */
-  --color-line: #262626; /* hairline borders / dividers on dark */
-  --color-electric-soft: #3b82f6; /* lighter electric for hovers/links */
-  --color-copper-soft: #cd8a4a; /* lighter copper for hovers */
-  --color-slate-soft: #94a3b8; /* readable muted text on dark */
+  /* --- Neutrals (light) --- */
+  --color-canvas: #f7f6f2; /* page background — warmer than pure white */
+  --color-surface: #ffffff; /* cards, dashboards, panels */
+  --color-mist: #eef2f7; /* blue-grey alternate sections */
+  --color-navy: #0f172a; /* headings + important text, dark sections */
+  --color-slate: #475569; /* body copy + descriptions */
+  --color-hair: #e6e3dc; /* warm hairline borders on canvas */
+  --color-hair-cool: #e2e8f0; /* cool hairline borders on mist/white */
 
-  /* --- Custom animations (all gated behind prefers-reduced-motion below) --- */
+  /* --- Legacy aliases (dark-theme names → light values) --- */
+  --color-ink: #f7f6f2;
+  --color-ink-card: #ffffff;
+  --color-ink-soft: #eef2f7;
+  --color-paper: #0f172a;
+  --color-line: #e6e3dc;
+  --color-slate-soft: #475569;
+  --color-electric: #2563eb;
+  --color-electric-soft: #1d4ed8;
+  --color-copper-soft: #d79452;
+
+  /* --- Motion (all gated behind prefers-reduced-motion below) --- */
+  --animate-rise: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float-soft: float-soft 7s ease-in-out infinite;
   --animate-pulse-node: pulse-node 4s ease-in-out infinite;
-  --animate-drift: drift 26s ease-in-out infinite;
-  --animate-float: float 8s ease-in-out infinite;
-  --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Font tokens are wired to the next/font variables set in app/layout.tsx.
-   `@theme inline` keeps the var() reference live instead of copying it. */
+/* Fonts are wired to the next/font variables set in app/layout.tsx. */
 @theme inline {
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -44,34 +53,34 @@
    ============================================================================ */
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
     scroll-behavior: smooth;
-    /* offset anchored scrolls so the sticky header never covers a target */
     scroll-padding-top: 6rem;
   }
 
   body {
-    background-color: var(--color-ink);
-    color: var(--color-paper);
+    background-color: var(--color-canvas);
+    color: var(--color-navy);
     font-family: var(--font-sans);
+    font-size: 16px; /* senior-friendly: never smaller for body */
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: var(--color-electric);
+    background: var(--color-blue);
     color: #fff;
   }
 
-  /* Visible, on-brand keyboard focus everywhere */
   :focus-visible {
-    outline: 2px solid var(--color-electric);
+    outline: 2px solid var(--color-blue);
     outline-offset: 3px;
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   h1,
@@ -79,19 +88,20 @@
   h3,
   h4 {
     font-family: var(--font-display);
+    color: var(--color-navy);
     letter-spacing: -0.02em;
+    line-height: 1.1;
     text-wrap: balance;
   }
 }
 
 /* ============================================================================
-   Reusable component utilities
+   Reusable utilities
    ============================================================================ */
 @layer components {
-  /* Consistent page gutters + max width */
   .container-x {
     width: 100%;
-    max-width: 80rem; /* 1280px */
+    max-width: 80rem;
     margin-inline: auto;
     padding-inline: 1.5rem;
   }
@@ -101,98 +111,92 @@
     }
   }
 
-  /* Soft radial accent glow used behind hero / CTA bands */
-  .glow-electric {
+  /* Soft elevation for cards + panels on the light canvas */
+  .shadow-soft {
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 10px 26px -16px rgba(15, 23, 42, 0.16);
+  }
+  .shadow-lift {
+    box-shadow:
+      0 2px 6px rgba(15, 23, 42, 0.06),
+      0 22px 48px -20px rgba(15, 23, 42, 0.24);
+  }
+
+  /* Very light circuit dot-grid — supports the brand, never competes */
+  .circuit-grid {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--color-blue) 22%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent);
+    mask-image: radial-gradient(closest-side, #000 55%, transparent);
+  }
+
+  /* Soft brand glows (kept subtle on light) */
+  .glow-blue {
     background: radial-gradient(
       closest-side,
-      color-mix(in srgb, var(--color-electric) 22%, transparent),
+      color-mix(in srgb, var(--color-blue) 16%, transparent),
       transparent
     );
   }
   .glow-copper {
     background: radial-gradient(
       closest-side,
-      color-mix(in srgb, var(--color-copper) 18%, transparent),
+      color-mix(in srgb, var(--color-copper-light) 20%, transparent),
       transparent
     );
   }
-
-  /* Faint dotted "circuit grid" — a quiet, static echo of the hero motif */
-  .circuit-grid {
-    background-image: radial-gradient(
-      color-mix(in srgb, var(--color-slate) 32%, transparent) 1px,
-      transparent 1px
+  /* Legacy alias */
+  .glow-electric {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--color-blue) 16%, transparent),
+      transparent
     );
-    background-size: 28px 28px;
-    -webkit-mask-image: radial-gradient(closest-side, #000 60%, transparent);
-    mask-image: radial-gradient(closest-side, #000 60%, transparent);
   }
 }
 
 /* ============================================================================
-   Keyframes (the connected-systems motif + scroll reveals)
+   Keyframes
    ============================================================================ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 @keyframes pulse-node {
   0%,
   100% {
-    opacity: 0.35;
+    opacity: 0.5;
     transform: scale(0.85);
   }
   50% {
     opacity: 1;
-    transform: scale(1.15);
-  }
-}
-
-/* A small "data pulse" that travels along a wire (offset-path set inline). */
-@keyframes flow {
-  from {
-    offset-distance: 0%;
-    opacity: 0;
-  }
-  10%,
-  90% {
-    opacity: 1;
-  }
-  to {
-    offset-distance: 100%;
-    opacity: 0;
-  }
-}
-
-@keyframes drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(0, -14px, 0);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: scale(1.12);
   }
 }
 
 /* ============================================================================
-   Respect prefers-reduced-motion — disable all ambient + reveal motion.
+   Respect prefers-reduced-motion — clean static experience.
    ============================================================================ */
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -34,7 +34,17 @@ export type IconName =
   | "star"
   | "mail"
   | "phone"
-  | "building";
+  | "building"
+  | "play"
+  | "grid"
+  | "briefcase"
+  | "inbox"
+  | "file"
+  | "calendar"
+  | "users"
+  | "receipt"
+  | "settings"
+  | "bell";
 
 const paths: Record<IconName, React.ReactNode> = {
   system: (
@@ -173,6 +183,64 @@ const paths: Record<IconName, React.ReactNode> = {
       <rect x="4" y="3" width="16" height="18" rx="1" />
       <path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2" />
       <path d="M10 21v-3h4v3" />
+    </>
+  ),
+  play: <path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />,
+  grid: (
+    <>
+      <rect x="4" y="4" width="7" height="7" rx="1.5" />
+      <rect x="13" y="4" width="7" height="7" rx="1.5" />
+      <rect x="4" y="13" width="7" height="7" rx="1.5" />
+      <rect x="13" y="13" width="7" height="7" rx="1.5" />
+    </>
+  ),
+  briefcase: (
+    <>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18" />
+    </>
+  ),
+  inbox: (
+    <>
+      <path d="M4 13l2-8h12l2 8v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
+      <path d="M4 13h4l1 2h6l1-2h4" />
+    </>
+  ),
+  file: (
+    <>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+      <path d="M14 3v5h5" />
+    </>
+  ),
+  calendar: (
+    <>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M3 9h18M8 3v4M16 3v4" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3.5 20a5.5 5.5 0 0 1 11 0" />
+      <path d="M16 5.4a3 3 0 0 1 0 5.6M17.5 20a5.5 5.5 0 0 0-2.2-4.1" />
+    </>
+  ),
+  receipt: (
+    <>
+      <path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21z" />
+      <path d="M9 8h6M9 12h6" />
+    </>
+  ),
+  settings: (
+    <>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 2h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 22h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z" />
+    </>
+  ),
+  bell: (
+    <>
+      <path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z" />
+      <path d="M10.5 20a1.5 1.5 0 0 0 3 0" />
     </>
   ),
 };

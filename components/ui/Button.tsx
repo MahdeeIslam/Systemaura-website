@@ -16,19 +16,19 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "group/btn inline-flex items-center justify-center gap-2 rounded-full font-semibold leading-none tracking-tight transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50";
+  "group/btn inline-flex items-center justify-center gap-2 rounded-xl font-semibold leading-none tracking-tight transition-all duration-150 ease-out active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-electric text-white shadow-[0_10px_34px_-12px_rgba(37,99,235,0.75)] hover:bg-electric-soft hover:shadow-[0_16px_44px_-12px_rgba(37,99,235,0.9)]",
+    "bg-blue text-white shadow-[0_6px_20px_-8px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 hover:bg-blue-strong hover:shadow-[0_12px_28px_-8px_rgba(37,99,235,0.55)] active:translate-y-0",
   secondary:
-    "border border-line bg-transparent text-paper hover:border-electric hover:text-white",
-  ghost: "text-slate-soft hover:text-paper",
+    "border border-copper/60 bg-surface text-navy hover:-translate-y-0.5 hover:border-copper-light hover:bg-copper/[0.06] active:translate-y-0",
+  ghost: "text-slate hover:text-blue",
 };
 
 const sizes: Record<Size, string> = {
   md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3.5 text-base",
+  lg: "px-6 py-3.5 text-[0.975rem]",
 };
 
 interface SharedProps {

@@ -28,7 +28,7 @@ export function SectionHeading({
   align = "center",
   as: Tag = "h2",
   className,
-  tone = "dark",
+  tone = "light",
 }: SectionHeadingProps) {
   return (
     <div
@@ -53,7 +53,7 @@ export function SectionHeading({
         <p
           className={cn(
             "max-w-2xl text-base leading-relaxed sm:text-lg",
-            tone === "dark" ? "text-slate-soft" : "text-slate",
+            tone === "dark" ? "text-white/75" : "text-slate",
           )}
         >
           {intro}

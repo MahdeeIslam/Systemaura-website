@@ -7,9 +7,14 @@ import { cn } from "@/lib/cn";
    ============================================================================ */
 
 const tones = {
-  ink: "bg-ink text-paper",
-  soft: "bg-ink-soft text-paper",
-  paper: "bg-paper text-ink",
+  canvas: "bg-canvas text-navy",
+  mist: "bg-mist text-navy",
+  surface: "bg-surface text-navy",
+  navy: "bg-navy text-canvas",
+  // Legacy aliases (dark-theme names mapped to light equivalents)
+  ink: "bg-canvas text-navy",
+  soft: "bg-mist text-navy",
+  paper: "bg-surface text-navy",
 } as const;
 
 interface SectionProps {

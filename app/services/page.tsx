@@ -26,7 +26,7 @@ export default function ServicesPage() {
             <span className="text-electric">heavy lifting</span>
           </>
         }
-        intro="Four ways we help operations-heavy businesses run smoother, look sharper and grow faster. Every one of them is built around how your business actually works."
+        intro="The ways we help operations-heavy businesses run smoother, look sharper and grow faster. Every one of them is built around how your business actually works."
       />
 
       <Section tone="ink" containerClassName="flex flex-col gap-20 sm:gap-28">

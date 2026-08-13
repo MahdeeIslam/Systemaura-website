@@ -9,6 +9,13 @@ The site has one job: **convert business owners into booked "Free Operational
 Audit" calls.** The primary call-to-action everywhere is _Book a Free Operational
 Audit_.
 
+Core message: **Better operations, less manual work, more profits.**
+
+**Design:** a light, slightly-warm UI — SystemAura blue for interaction, copper
+as a premium accent, deep navy text on a warm off-white canvas, per the Website
+Redesign & Interaction Guide. The homepage leads with a clearly-labelled **demo
+dashboard** and a **Manual work → Automation → One connected system** explainer.
+
 ---
 
 ## Tech stack
@@ -16,7 +23,7 @@ Audit_.
 - **Next.js 15** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS v4** (CSS-first config via `@theme` in `app/globals.css`)
 - Fonts via **`next/font`** — Space Grotesk (display) + Inter (body)
-- No backend in v1: the ROI calculator and booking form are fully client-side
+- No backend in v1: the booking form is client-side (emailed via Web3Forms)
 - No paid dependencies. Icons, the logo and the animated "connected systems"
   motif are all hand-built inline SVG.
 
@@ -87,17 +94,23 @@ lib/
 
 All brand colours are defined once as Tailwind theme tokens in
 [`app/globals.css`](app/globals.css) under `@theme`. Change a hex value and it
-updates everywhere (`bg-ink`, `text-electric`, `border-copper`, etc.):
+updates everywhere (`bg-canvas`, `text-blue`, `border-copper`, etc.):
 
-| Token            | Hex       | Use                                            |
-| ---------------- | --------- | ---------------------------------------------- |
-| `ink`            | `#111111` | Primary background                             |
-| `electric`       | `#2563EB` | Primary accent — CTAs, key headline words      |
-| `copper`         | `#B87333` | Secondary accent — eyebrows, icons, numbering  |
-| `paper`          | `#F8F8F8` | Primary text on dark / light section backgrounds |
-| `slate`          | `#475569` | Muted text, borders, secondary UI              |
-| `ink-card`       | `#1A1A1A` | Lifted card surfaces                           |
-| `slate-soft`     | `#94A3B8` | Readable muted body text on dark               |
+| Token           | Hex       | Use                                              |
+| --------------- | --------- | ------------------------------------------------ |
+| `blue`          | `#2563EB` | Primary — buttons, links, active states, icons   |
+| `copper`        | `#B87333` | Accent — section labels, secondary highlights    |
+| `copper-light`  | `#D79452` | Soft copper for gradients / hover glow           |
+| `canvas`        | `#F7F6F2` | Page background — warm off-white                  |
+| `surface`       | `#FFFFFF` | Cards, dashboards, panels                         |
+| `mist`          | `#EEF2F7` | Blue-grey alternate sections                      |
+| `navy`          | `#0F172A` | Headings + important text, dark sections (footer) |
+| `slate`         | `#475569` | Body copy + descriptions                          |
+| `hair` / `hair-cool` | `#E6E3DC` / `#E2E8F0` | Hairline borders                     |
+
+> The old dark-theme names (`ink`, `paper`, `line`, `slate-soft`, `electric`)
+> still exist as aliases mapped to the light values, so older components keep
+> working — prefer the names above in new code.
 
 ### Fonts
 
@@ -150,6 +163,14 @@ Prefer Calendly or a CRM instead? Swap the `fetch` in `ContactForm.tsx`.
 - Never mention "React", "AI", "APIs", "integrations" or "development" in
   customer-facing copy — translate every feature into a business outcome.
 - Active voice. Sentence case for body; deliberate caps only for eyebrows.
-- Buttons say what happens ("Book a Free Operational Audit", "View Case
-  Studies", "Book My Audit").
-```
+- Buttons say what happens ("Book a Free Operational Audit", "Book Free Audit").
+
+## Content & credibility rules (important)
+
+- **No unverified proof.** Do not publish client counts, systems-built /
+  hours-saved figures, revenue claims, testimonials or client logos unless they
+  are backed by real, approved client data.
+- The hero dashboard and the Jobs table are **example data** and are each
+  labelled **"Demo"** — keep that label if you change the numbers.
+- Keep the site focused on real, understandable outcomes: less manual work,
+  fewer mistakes, better visibility, faster follow-up, more time to grow.

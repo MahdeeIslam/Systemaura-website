@@ -56,7 +56,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="bg-ink text-paper antialiased">
+      <body className="bg-canvas text-navy antialiased">
         {/* Accessibility: lets keyboard users jump past the nav */}
         <a
           href="#main"

@@ -25,6 +25,7 @@ export const NAV = [
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 /* --- Trust bar (homepage) ----------------------------------------------------
@@ -47,23 +48,28 @@ export const SOLUTIONS: Solution[] = [
   {
     icon: "system",
     title: "Custom Systems",
-    outcome: "Tailored business systems built around your unique workflows.",
+    outcome: "Tailored systems built around your workflow and operations.",
   },
   {
     icon: "automation",
     title: "Automations",
-    outcome: "We automate repetitive tasks and make everyday work run smoother.",
+    outcome:
+      "We automate repetitive tasks so your team can focus on what matters.",
   },
   {
     icon: "app",
     title: "Web Applications",
-    outcome:
-      "Powerful internal tools that improve efficiency and data visibility.",
+    outcome: "Powerful tools to manage jobs, teams, customers and data.",
   },
   {
     icon: "website",
     title: "Websites",
-    outcome: "High-converting websites that generate leads and build trust.",
+    outcome: "Modern, high-converting websites that generate leads and build trust.",
+  },
+  {
+    icon: "integration",
+    title: "Integrations",
+    outcome: "We connect your existing tools so everything works together.",
   },
 ];
 
@@ -134,6 +140,21 @@ export const SERVICES: ServiceDetail[] = [
     ],
     result:
       "A website that works as your best salesperson — bringing in qualified enquiries around the clock and making your business look as good as it is.",
+  },
+  {
+    icon: "integration",
+    title: "Integrations",
+    outcome: "We connect your existing tools so everything works together.",
+    problem:
+      "Most businesses run on a patchwork of tools that don't talk to each other — so the same information gets typed in three times and things fall through the gaps between them.",
+    includes: [
+      "Your existing tools connected so data flows automatically",
+      "No more re-entering the same details in different places",
+      "Information kept in sync across your whole operation",
+      "One reliable source of truth your team can trust",
+    ],
+    result:
+      "Your tools work as one. Information moves on its own, double handling disappears, and everyone sees the same up-to-date picture.",
   },
 ];
 
