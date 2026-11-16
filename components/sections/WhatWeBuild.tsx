@@ -11,7 +11,7 @@ import { SOLUTIONS } from "@/lib/content";
 /* Homepage — "What we build": the five things we deliver + an audit prompt. */
 export function WhatWeBuild() {
   return (
-    <Section tone="mist">
+    <Section tone="canvas">
       <SectionHeading
         eyebrow="What We Build"
         title="Everything your operation needs, built to fit."

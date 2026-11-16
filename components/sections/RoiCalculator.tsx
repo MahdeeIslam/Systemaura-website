@@ -82,10 +82,10 @@ function SliderField({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-4">
-        <label htmlFor={id} className="text-sm font-medium text-paper">
+        <label htmlFor={id} className="text-sm font-medium text-navy">
           {label}
         </label>
-        <span className="rounded-md bg-ink px-2.5 py-1 font-display text-sm font-semibold text-electric tabular-nums ring-1 ring-inset ring-line">
+        <span className="rounded-md bg-canvas px-2.5 py-1 font-display text-sm font-semibold text-blue tabular-nums ring-1 ring-inset ring-hair">
           {display}
         </span>
       </div>
@@ -98,7 +98,7 @@ function SliderField({
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
         aria-valuetext={display}
-        className="mt-3 w-full cursor-pointer accent-electric"
+        className="mt-3 w-full cursor-pointer accent-blue"
       />
     </div>
   );
@@ -121,7 +121,7 @@ export function RoiCalculator() {
 
       <div className="mx-auto mt-14 grid max-w-5xl items-stretch gap-6 lg:grid-cols-2">
         {/* Inputs */}
-        <div className="rounded-2xl border border-line bg-ink-card p-6 sm:p-8">
+        <div className="rounded-2xl border border-hair bg-surface p-6 shadow-soft sm:p-8">
           <div className="flex flex-col gap-7">
             <SliderField
               label="Number of staff"
@@ -154,22 +154,22 @@ export function RoiCalculator() {
         </div>
 
         {/* Result */}
-        <div className="relative overflow-hidden rounded-2xl border border-electric/30 bg-ink-card p-6 sm:p-8">
+        <div className="relative overflow-hidden rounded-2xl border border-blue/30 bg-gradient-to-br from-blue/[0.05] to-surface p-6 shadow-soft sm:p-8">
           <div
-            className="glow-electric pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-90"
+            className="glow-blue pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-90"
             aria-hidden="true"
           />
           <div className="relative flex h-full flex-col">
-            <p className="text-sm font-medium text-slate-soft">
+            <p className="text-sm font-medium text-slate">
               Estimated annual cost of manual work
             </p>
             <p
-              className="mt-3 font-display text-5xl font-bold tracking-tight text-electric tabular-nums sm:text-6xl"
+              className="mt-3 font-display text-5xl font-bold tracking-tight text-blue tabular-nums sm:text-6xl"
               aria-live="polite"
             >
               {money.format(animated)}
             </p>
-            <p className="mt-5 text-lg font-medium leading-relaxed text-paper">
+            <p className="mt-5 text-lg font-medium leading-relaxed text-navy">
               That&rsquo;s what inefficiency is costing you every year.
             </p>
             <div className="mt-auto pt-8">
@@ -181,7 +181,7 @@ export function RoiCalculator() {
         </div>
       </div>
 
-      <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-slate-soft">
+      <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-slate">
         An estimate based on {WEEKS_PER_YEAR} working weeks a year — a starting
         point, not a quote. Your free audit pinpoints the real numbers.
       </p>
