@@ -117,7 +117,7 @@ export default async function IndustryPage({
             />
             <div className="relative">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-copper">
-                Real results
+                What this could look like
               </p>
               <p className="mt-4 max-w-3xl font-display text-2xl font-medium leading-snug text-paper sm:text-[1.7rem]">
                 {ind.caseAngle}

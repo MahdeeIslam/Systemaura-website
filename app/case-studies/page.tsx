@@ -9,7 +9,7 @@ import { CASE_STUDIES } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "How operations-heavy businesses cut admin, improved visibility and got paid faster — told through the problems we solved and the results they saw.",
+    "Example scenarios showing how operations-heavy businesses can cut admin, improve visibility and get paid faster — laid out as problem, solution and outcome.",
 };
 
 export default function CaseStudiesPage() {
@@ -19,10 +19,10 @@ export default function CaseStudiesPage() {
         eyebrow="Case Studies"
         title={
           <>
-            Real problems. <span className="text-electric">Real results.</span>
+            Problems we solve, <span className="text-electric">and how.</span>
           </>
         }
-        intro="A look at the kinds of problems we remove and the outcomes our clients feel — laid out as problem, solution and result."
+        intro="Example scenarios showing the kinds of problems we remove and the outcomes we aim for — laid out as problem, solution and outcome."
       />
 
       <Section tone="ink">
@@ -34,17 +34,16 @@ export default function CaseStudiesPage() {
           ))}
         </div>
 
-        {/* NOTE: these case studies are illustrative examples that reflect the
-            types of results we deliver. Replace with real, verified client
-            numbers and named references before going live. */}
+        {/* These are generic example scenarios, not specific client results. */}
         <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-slate-soft">
-          These examples are illustrative of the outcomes we deliver. We&rsquo;ll
-          share named references and verified numbers as part of your audit.
+          These are example scenarios to show how we work — not specific client
+          results. We&rsquo;ll walk through what&rsquo;s realistic for your
+          business in your free Operational Audit.
         </p>
       </Section>
 
       <CtaSection
-        heading="Want results like these for your business?"
+        heading="Want to see what's possible for your business?"
         sub="Every project starts with a free Operational Audit. We'll find your biggest opportunities and show you what's possible."
       />
     </>

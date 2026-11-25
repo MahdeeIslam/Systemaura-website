@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Icon } from "@/components/ui/Icon";
 import { DashboardDemo } from "@/components/dashboard/DashboardDemo";
 
 /* Homepage section 1 — Hero (light) with the illustrative demo dashboard. */
@@ -45,7 +44,6 @@ export function Hero() {
               Book Free Operational Audit
             </Button>
             <Button href="#how-it-works" size="lg" variant="secondary">
-              <Icon name="play" size={14} className="text-copper" />
               See How It Works
             </Button>
           </div>

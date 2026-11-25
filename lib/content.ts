@@ -245,7 +245,7 @@ export const INDUSTRIES: Industry[] = [
       },
     ],
     caseAngle:
-      "A Melbourne glass manufacturer cut admin time and sped up payments after we automated job tracking, customer updates and reminders.",
+      "For a glass manufacturer, that usually means automating job tracking, customer updates and payment reminders — so there's less admin and money comes in sooner.",
   },
   {
     slug: "cabinet-makers",
@@ -284,7 +284,7 @@ export const INDUSTRIES: Industry[] = [
       },
     ],
     caseAngle:
-      "A cabinet maker reclaimed days of admin each month by replacing whiteboards and spreadsheets with one shared job system.",
+      "For a cabinet maker, that often means replacing whiteboards and spreadsheets with one shared job system — so there's less admin and installs run smoother.",
   },
   {
     slug: "construction",
@@ -323,7 +323,7 @@ export const INDUSTRIES: Industry[] = [
       },
     ],
     caseAngle:
-      "A construction firm gained a real-time view of every project and stopped variations from eating into margins.",
+      "For a construction firm, that usually means a real-time view of every project, so variations get captured before they eat into margins.",
   },
   {
     slug: "trades",
@@ -362,7 +362,7 @@ export const INDUSTRIES: Industry[] = [
       },
     ],
     caseAngle:
-      "A trades business stopped doing admin at night and got paid an average of two weeks faster.",
+      "For a trades business, that means scheduling, quoting and invoicing can happen automatically — so admin stops eating into your evenings and payments come in faster.",
   },
   {
     slug: "shopfitting",
