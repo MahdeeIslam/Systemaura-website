@@ -14,7 +14,9 @@ export const COMPANY = {
   shortName: "SystemAura",
   location: "Melbourne",
   email: "systemaurasolutions@gmail.com",
-  // No public phone number yet.
+  phone: "+61 413 480 902",
+  phoneHref: "tel:+61413480902",
+  contactName: "Aksh Sammi",
   primaryCta: "Book a Free Operational Audit",
 } as const;
 

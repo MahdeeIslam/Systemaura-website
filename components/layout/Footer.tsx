@@ -68,6 +68,15 @@ export function Footer() {
                 {COMPANY.email}
               </a>
             </li>
+            <li className="flex items-center gap-2.5">
+              <Icon name="phone" size={16} className="text-copper-light" />
+              <a
+                href={COMPANY.phoneHref}
+                className="transition-colors hover:text-copper-light"
+              >
+                {COMPANY.phone}
+              </a>
+            </li>
             <li className="flex items-center gap-2.5 text-white/60">
               <Icon name="building" size={16} className="text-copper-light" />
               Based in {COMPANY.location}
